@@ -1,0 +1,31 @@
+nav {
+    overflow: hidden;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #427D9D;
+    width: 100%;
+    min-height: 30px;
+}
+
+nav .title {
+    list-style: none;
+}
+
+nav ul {
+    display: flex;
+    float: right;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 8px;
+    margin: 0 8px;
+    border-radius: 8px;
+}
