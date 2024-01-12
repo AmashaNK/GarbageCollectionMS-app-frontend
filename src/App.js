@@ -7,6 +7,7 @@ import Navbar from './Components/Navbar'
 import NewsPage from './Components/Pages/NewsPage'
 import AboutUs from './Components/Pages/AboutUs'
 import ContactUs from './Components/Pages/ContactUs'
+import Sidebar from './Components/Sidebar'
 
 function App() {
     return ( <
@@ -14,30 +15,30 @@ function App() {
         <
         div >
         <
-        Navbar / >
+        Sidebar / >
         <
         Routes >
         <
-        Route exact path = '/'
+        Route path = "/"
         element = { < HomePage / > }
-        />  <
-        Route exact path = '/news'
+        /> <
+        Route path = "/news"
         element = { < NewsPage / > }
         /> <
-        Route exact path = '/contact-us'
+        Route path = "/contact-us"
         element = { < ContactUs / > }
         /> <
-        Route exact path = '/about-us'
+        Route path = "/about-us"
         element = { < AboutUs / > }
         /> <
-        Route exact path = '/login'
+        Route path = "/login"
         element = { < Login / > }
-        />  <
-        Route exact path = '/signup'
+        /> <
+        Route path = "/signup"
         element = { < SignupForm / > }
-        />  <
-        /Routes>    <
-        /div>  <
+        /> <
+        /Routes> <
+        /div> <
         /Router>
     );
 }

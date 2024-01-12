@@ -1,35 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Gideon+Roman&family=Poppins:wght@400;600;700&family=Roboto+Serif:ital,wght@0,200;1,100&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.body {
-    font-family: 'Poppins', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url('../Assets/background.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .wrapper {
+    position: relative;
     width: 400px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(30px);
     color: #fff;
-    border-radius: 10px;
-    padding: 30px 50px;
+    border-radius: 30px;
+    padding: 30px 40px;
+    margin: 50px 15px;
+}
+
+@media(max-width: 850px) {
+    .wrapper {
+        position: relative;
+        margin-left: 20px;
+    }
 }
 
 .wrapper h1 {
@@ -41,7 +30,7 @@ code {
     position: relative;
     width: 100%;
     height: 50px;
-    margin: 30px 0;
+    margin: 20px 0;
 }
 
 .input-box input {
@@ -91,6 +80,7 @@ code {
 
 .wrapper button {
     width: 100%;
+    justify-content: center;
     height: 45px;
     background: #fff;
     border: none;

@@ -1,37 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Gideon+Roman&family=Poppins:wght@400;600;700&family=Roboto+Serif:ital,wght@0,200;1,100&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.background {
-    font-family: 'Poppins', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url('../Assets/background.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .container {
+    position: relative;
     width: 420px;
-    height: 520px;
+    height: 580px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(30px);
     color: #fff;
-    border-radius: 10px;
+    border-radius: 30px;
     padding: 20px 20px;
-    margin-top: 50px;
+    margin: 15px 15px;
 }
 
 .container h1 {
@@ -39,16 +20,62 @@ code {
     text-align: center;
 }
 
+.container .dropdown {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 7px 15px 2px;
+}
+
+select {
+    appearance: none;
+    width: 90%;
+    font-size: 16px;
+    padding: 10px 35px 10px 20px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    color: rgb(117, 117, 117);
+    border-radius: 40px;
+    cursor: pointer;
+    display: grid;
+}
+
+.dropdown::before,
+.dropdown::after {
+    --size: 4.8px;
+    content: "";
+    border: none;
+    position: absolute;
+    right: 16px;
+    pointer-events: none;
+}
+
+.dropdown::before {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-bottom: var(--size) solid rgb(117, 117, 117);
+    top: 30%;
+    right: 17%;
+}
+
+.dropdown::after {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-top: var(--size) solid rgb(117, 117, 117);
+    top: 45%;
+    right: 17%;
+}
+
 .container .input-box1 {
     position: relative;
     width: 100%;
     height: 50px;
-    margin: 15px 0;
+    margin: 7px 15px 2px;
 }
 
 .input-box1 input {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 80%;
     background: transparent;
     outline: none;
     border: 2px solid rgba(255, 255, 255, .2);
@@ -62,10 +89,15 @@ code {
     color: #fff;
 }
 
-.container button {
-    width: 100%;
+.button_group {
+    margin-left: 25px;
+}
+
+.button_group button {
+    width: 90%;
+    text-align: center;
     height: 45px;
-    margin: 5px 0;
+    margin: 5px 0px;
     background: #FFFBF5;
     border: none;
     outline: none;
@@ -80,7 +112,7 @@ code {
 .container .login-link {
     font-size: 14.5px;
     text-align: right;
-    margin: 15px 0 10px;
+    margin: 10px 0 3px;
 }
 
 .login-link p a {
