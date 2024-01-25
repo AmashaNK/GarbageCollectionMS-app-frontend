@@ -1,31 +1,102 @@
-nav {
-    overflow: hidden;
-    position: fixed;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #427D9D;
-    width: 100%;
-    min-height: 30px;
+.navbar {
+  width: 100%;
+  height: 50px;
+  background-color: #0d324e;
+  display: flex;
+  flex-direction: row;
 }
 
-nav .title {
-    list-style: none;
+.navbar .leftSide {
+  flex: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 150px;
 }
 
-nav ul {
-    display: flex;
-    float: right;
+.navbar .leftSide img {
+  width: 50px;
 }
 
-nav ul li {
-    list-style: none;
+.navbar .rightSide {
+  flex: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-nav ul li a {
-    display: block;
-    text-decoration: none;
-    color: white;
-    padding: 8px;
-    margin: 0 8px;
-    border-radius: 8px;
+.navbar a {
+  color: hsl(128, 29%, 89%);
+  text-decoration: none;
+  margin: 30px;
+}
+
+.navbar .rightSide button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.navbar .rightSide svg {
+  font-size: 40px;
+}
+
+.navbar #open {
+  padding-left: 0px;
+}
+.navbar #open img {
+  display: none;
+}
+
+.navbar #close img {
+  display: inherit;
+}
+
+.navbar #open .hiddenLinks {
+  display: inherit;
+  margin-left: 30px;
+}
+
+.navbar #close .hiddenLinks {
+  display: none;
+}
+
+.navbar #open a {
+  width: 70px;
+  margin: 5px;
+}
+@media only screen and (max-width: 900px) {
+  .navbar .rightSide a {
+    width: 50px;
+  }
+  .navbar .leftSide {
+    padding-left: 90px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar .rightSide a {
+    display: none;
+  }
+
+  .navbar .rightSide {
+    justify-content: flex-end;
+    padding-right: 60px;
+  }
+
+  .navbar .rightSide button {
+    display: inherit;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .navbar .rightSide button {
+    display: none;
+  }
+
+  .hiddenLinks {
+    display: none;
+  }
 }

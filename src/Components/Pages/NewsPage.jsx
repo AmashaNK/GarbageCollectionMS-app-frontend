@@ -1,9 +1,11 @@
-import React from 'react'
-
+import React from "react";
+import "./NewsPage.css";
 function NewsPage() {
   return (
-    <div>NewsPage</div>
-  )
+    <div className="img-container">
+      <h1>Ggudg</h1>
+    </div>
+  );
 }
 
-export default NewsPage
+export default NewsPage;
