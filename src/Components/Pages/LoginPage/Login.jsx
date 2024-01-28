@@ -1,8 +1,9 @@
 import React from 'react';
 import './Login.css';
-import './Body.css';
+import '../Body.css';
 import { useRef, useState, useEffect } from 'react';
 import { FaUser, FaLock } from "react-icons/fa";
+import Sidebar from '../../Sidebar';
 
 const Login = () => {
     const userRef = useRef();
@@ -39,6 +40,7 @@ const Login = () => {
 
     return (
         <>
+        <Sidebar />
             {success ? (
                 <section>
                     <h1>You are logged in!</h1>

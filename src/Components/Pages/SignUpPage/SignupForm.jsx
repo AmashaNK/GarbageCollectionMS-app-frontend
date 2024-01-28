@@ -1,8 +1,9 @@
 import React from 'react';
-import './Body.css';
+import '../Body.css';
 import './SignupForm.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Sidebar from '../../Sidebar';
 
 
 const SignupForm = () => {
@@ -105,15 +106,18 @@ const SignupForm = () => {
     };
 
     const goBack = () => {
-        //Navigate back to the login form
-        navigate('/login');
+        //Navigate back to the home page
+        navigate('/');
     };
 
 
     return (
+        <div>
+            <Sidebar />
         <div className='body'>
             <div className='container'>
-            <form action=''>
+            
+            <form onSubmit={handleSignup}>
                 <h1>
                     Sign Up
                 </h1>
@@ -177,7 +181,7 @@ const SignupForm = () => {
                     />
                 </div>
                 <div className='button_group'>
-                    <button type='submit' onClick={handleSignup}>Sign Up</button>
+                    <button type='submit' >Sign Up</button>
                     <button type='button' onClick={goBack}>Back</button>
                 </div>
                 <div className="login-link">
@@ -186,7 +190,7 @@ const SignupForm = () => {
             </form>
         </div>
         </div>
-        
+        </div>
     )
 }
 
