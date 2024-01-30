@@ -4,10 +4,13 @@ import '../Body.css';
 import { useRef, useState, useEffect } from 'react';
 import { FaUser, FaLock } from "react-icons/fa";
 import Sidebar from '../../Sidebar';
+import Navbar from '../../Navbar';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const userRef = useRef();
     const errRef = useRef();
+    const navigate = useNavigate();
 
     const [user, setUser] = useState('');
     const [pwd, setPwd] = useState('');
@@ -29,6 +32,9 @@ const Login = () => {
         setUser('');             //Clear the state variable 'user'
         setPwd('');              //Clear the state variable 'pwd'
         setSuccess(true);        //Sets the state variable 'success' to true
+
+        //navigate to Admin dashboard
+        navigate('/admin-dashboard');
     }
 
     const handleLogin = () =>{
@@ -36,11 +42,12 @@ const Login = () => {
             //Store user information in local storage
             localStorage.setItem('userData', JSON.stringify({user, pwd}));
         }
+
     };
 
     return (
         <>
-        <Sidebar />
+        <Navbar />
             {success ? (
                 <section>
                     <h1>You are logged in!</h1>

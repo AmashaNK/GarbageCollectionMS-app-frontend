@@ -4,6 +4,7 @@ import './SignupForm.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../../Sidebar';
+import Navbar from '../../Navbar';
 
 
 const SignupForm = () => {
@@ -113,7 +114,7 @@ const SignupForm = () => {
 
     return (
         <div>
-            <Sidebar />
+            <Navbar />
         <div className='body'>
             <div className='container'>
             
