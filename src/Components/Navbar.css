@@ -4,8 +4,8 @@
   background-color: #0d324e;
   display: flex;
   flex-direction: row;
+  position: fixed;
 }
-
 .navbar .leftSide {
   flex: 50%;
   height: 100%;
