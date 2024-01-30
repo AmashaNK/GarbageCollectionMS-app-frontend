@@ -9,7 +9,7 @@ const Dashboard = () => {
   return (
     <Box sx={{}}>
       <Header />
-      <SideNavbar />
+      {/* <SideNavbar /> */}
       <div className="PageContent" style={{ width: '100%' }}>
 
       </div>
