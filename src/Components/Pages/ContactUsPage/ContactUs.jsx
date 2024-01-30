@@ -54,7 +54,6 @@ const ContactUsPage = () => {
       <Header />
       <Container maxWidth="md" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '79vh', marginBottom: '10px', position: 'fixed', marginLeft: '180px' }}>
         <Paper elevation={3} style={{ padding: '20px', width: '100%', maxWidth: '1700px', minHeight: '450px', position: 'relative', display: 'flex' }}>
-          {/* Image */}
           <img
             src={ContactImage}
             alt="Contact"
