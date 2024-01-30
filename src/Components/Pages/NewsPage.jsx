@@ -1,11 +1,25 @@
 import React from "react";
+import { newsList as NewsList } from "./NewsList";
+import NewsItem from "./NewsItem";
 import "./NewsPage.css";
+
 function NewsPage() {
   return (
-    <div className="img-container">
-      <h1>Ggudg</h1>
+    <div className="news">
+      <h1 className="newsTitle">News</h1>
+      <div className="newsList">
+        {NewsList.map((newsItem, key) => {
+          return (
+            <NewsItem
+              key={key}
+              image={newsItem.image}
+              name={newsItem.name}
+              para={newsItem.para}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
-
 export default NewsPage;
