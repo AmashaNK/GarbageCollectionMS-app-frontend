@@ -11,7 +11,11 @@ export const newsList = [
     image: Environment,
     para: "The Colombo Municipal Council (CMC) has sprung into action and is chopping off branches and removing trees as more complaints have been received by residents and state and private offices.This follows the tragic incident where a tree on the side of Duplication Road crashed into an SLTB bus, killing five passengers and injuring 17.",
   },
-  { name: "Repairs", image: Repairs },
+  {
+    name: "Repairs",
+    image: Repairs,
+    para: "The identified structures, located within the jurisdiction of the Colombo Municipal Council, have been categorized as high-risk, prompting decisive action. Among the notable buildings are the Khettarama Baron Jayathilaka College Building and residences on Jumma Masjid Road.",
+  },
   {
     name: "About Tax",
     image: Tax,
