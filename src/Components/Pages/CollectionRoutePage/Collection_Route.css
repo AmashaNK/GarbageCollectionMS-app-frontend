@@ -3,11 +3,11 @@
   }
   
   #marker {
-    background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/washington-monument.jpg');
+    background-image: url('../../Assets/bin.png');
     background-size: cover;
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: 0%;
     cursor: pointer;
     }
      
