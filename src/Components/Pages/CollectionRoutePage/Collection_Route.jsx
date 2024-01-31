@@ -20,15 +20,12 @@ const Collection_Route = () => {
       container: 'map',
       style: 'mapbox://styles/pubudu98coder/clrz8ttrc00sq01plfgfjgpi8',//mapbox://styles/pubudu98coder/clrz8ttrc00sq01plfgfjgpi8
       center: bin1,
-      zoom: 20
+      zoom: 30
     });
     const bin1PopUp = document.createElement('div');
     bin1PopUp.innerHTML = '<h2>Garbage Bin 01</h2><ul><li>Fill Level: 10% </li><li>Status: Collected </li></ul>'
-const bin2PopUp = document.createElement('div');
-bin2PopUp.innerHTML = '<h2>Garbage Bin 02</h2><ul><li>Fill Level: 50% </li><li>Status: Not Collected </li></ul>'
-
-    // const popup = new mapboxgl.Popup({ offset: 25 }).setText(
-    //   'Garbage Bin 01'                                
+    const bin2PopUp = document.createElement('div');
+    bin2PopUp.innerHTML = '<h2>Garbage Bin 02</h2><ul><li>Fill Level: 50% </li><li>Status: Not Collected </li></ul>'                                
         const popup1 = new mapboxgl.Popup({ offset: 25 }).setDOMContent(bin1PopUp
     );
     const popup2 = new mapboxgl.Popup({ offset: 25 }).setDOMContent(bin2PopUp
