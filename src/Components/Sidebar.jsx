@@ -3,6 +3,7 @@ import { FaTh,FaUserAlt,FaBars } from 'react-icons/fa';
 import { IoNewspaper } from "react-icons/io5";
 import { RiContactsFill,RiLoginCircleFill } from "react-icons/ri";
 import { NavLink } from 'react-router-dom';
+import Logo from "../Components/Assets/logo.png";
 import './Sidebar.css';
 
 const Sidebar = ({children}) => {

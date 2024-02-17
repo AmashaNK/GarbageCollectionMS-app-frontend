@@ -11,7 +11,7 @@ const Header = (props) => {
   //   //get auth context and get details from authContext
 
   const handleOnClick = (event) => {
-    navigate('/profile')
+    navigate('/admin-dashboard')
   }
 
   return (
@@ -21,7 +21,7 @@ const Header = (props) => {
         sx={{
           '& .MuiTextField-root': { m: 1 },
           '& .MuiButton-root': { m: 1 },
-          paddingLeft: '180px',
+          paddingLeft: '150px',
           paddingRight: '30px',
           paddingTop: '10px',
           bgcolor: '#1B4242'
@@ -37,7 +37,7 @@ const Header = (props) => {
       >
         <Grid container spacing={2}>
           <Grid item sm={6}>
-            <h1 style={{ color: 'white', marginLeft:'60px', marginTop:'5px' }}>Smart Collector</h1>
+            <h1 style={{ color: 'white', marginLeft:'20px', marginTop:'5px' }}>Smart Collector</h1>
           </Grid>
           <Grid
             item
