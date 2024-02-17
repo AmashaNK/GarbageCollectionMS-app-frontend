@@ -13,6 +13,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { Link } from 'react-router-dom';
+import { Login } from '@mui/icons-material';
 
 const drawerWidth = 230;
 
@@ -42,11 +44,13 @@ export default function SideNavbar() {
       >
         <Toolbar />
         
+        
         <List>
           {['Overview', 'Add Truck Driver', 'Add Truck', 'Available Drivers','Available Trucks'].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
+                  {index % 2 == 0? <InboxIcon /> : <MailIcon />}
                   {index % 2 == 0? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} />
@@ -54,6 +58,8 @@ export default function SideNavbar() {
             </ListItem>
           ))}
         </List>
+        
+        {/* <List>
         
         {/* <List>
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
@@ -66,6 +72,7 @@ export default function SideNavbar() {
               </ListItemButton>
             </ListItem>
           ))}
+        </List> */}
         </List> */}
       </Drawer>
       
