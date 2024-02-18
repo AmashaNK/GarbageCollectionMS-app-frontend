@@ -22,6 +22,7 @@ import RemoveRedEyeRoundedIcon from '@mui/icons-material/RemoveRedEyeRounded';
 import PersonAddAltRoundedIcon from '@mui/icons-material/PersonAddAltRounded';
 import ContactMailSharpIcon from '@mui/icons-material/ContactMailSharp';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
+import { AddCircleOutlineOutlined, Info, LocalShipping, Newspaper, Person, PersonAdd, VisibilityOutlined } from '@mui/icons-material';
 
 const drawerWidth = 220;
 
@@ -140,11 +141,13 @@ function ResponsiveDrawer(props) {
             <Toolbar />
             <List sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '26%', marginTop: '2px', marginLeft: '2px' }}>
                 {[
-                    { text: 'Overview', icon: <RemoveRedEyeRoundedIcon /> },
-                    { text: 'Add Truck Driver', icon: <PersonAddAltRoundedIcon /> },
-                    { text: 'Add Truck', icon: <InboxIcon /> },
-                    { text: 'Available Drivers', icon: <ContactMailSharpIcon /> },
-                    { text: 'Available Trucks', icon: <InboxIcon /> }
+                    { text: 'Overview', icon: <VisibilityOutlined/> },
+                    { text: 'Add Truck', icon: <AddCircleOutlineOutlined /> },
+                    { text: 'Add Truck Driver', icon: <PersonAdd /> },
+                    { text: 'Available Trucks', icon: <LocalShipping /> },
+                    { text: 'Available Drivers', icon: <Person /> },
+                    { text: 'Edit News Page', icon: <Newspaper /> },
+                    { text: 'Edit About Us Page', icon: <Info /> }
                 ].map((item, index) => (
                     <ListItem key={item.text} disablePadding>
                         <ListItemButton>
