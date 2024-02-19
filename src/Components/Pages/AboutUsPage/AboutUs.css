@@ -1,0 +1,38 @@
+.AboutUs {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+}
+
+.AboutUsTop {
+    width: 100%;
+    height: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.AboutUsBottom {
+    display: flex;
+    flex-direction: column;
+    height: 5%;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.AboutUsBottom p {
+    width: 1200px;
+}
+
+.AboutUs .AboutUsBottom h1 {
+    font-weight: 400;
+    font-size: 60px;
+    color: rgb(7, 66, 7);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    transform: translateY(-30px);
+}

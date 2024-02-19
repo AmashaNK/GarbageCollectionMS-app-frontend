@@ -1,34 +1,47 @@
-import React  from 'react';
-import {Link} from 'react-router-dom';
-import './Navbar.css';
+import React, { useState } from "react";
+import Logo from "../Components/Assets/logo-black.png";
+import { Link } from "react-router-dom";
+import ReorderIcon from "@mui/icons-material/Reorder";
+import "./Navbar.css";
 
-const NavBar = () => {
-    return(
-        <nav>
-            
-            <ul>
-                <li>
-                    <Link to ="/" className='title'>Home</Link>
-                </li>
-                <li>
-                    <Link to ="/news">News</Link>
-                </li>
-                <li>
-                    <Link to ="/contact-us">Contact Us</Link>
-                </li>
-                <li>
-                    <Link to ="/about-us">About Us</Link>
-                </li>
-                <li>
-                    <Link to ="/login">Login</Link>
-                </li>
-                <li>
-                    <Link to ="/signup"></Link>
-                </li>
-            </ul>
+function Navbar() {
+  const [openLinks, setOpenLinks] = useState(false);
 
-        </nav>
-    )
+  const toggleNavbar = () => {
+    setOpenLinks(!openLinks);
+  };
+
+  return (
+    <div className="navbar">
+      <div className="leftSide" id={openLinks ? "open" : "close"}>
+        <img src={Logo} />
+        <div className="hiddenLinks">
+          <Link to="/" className="title">
+            Home
+          </Link>
+          <Link to="/news">News</Link>
+          {/* <Link to="/contact-us">Contact Us</Link> */}
+          <Link to="/about-us">About Us</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/signup"></Link>
+        </div>
+      </div>
+
+      <div className="rightSide">
+        <Link to="/" className="title">
+          Home
+        </Link>
+        <Link to="/news">News</Link>
+        {/* <Link to="/contact-us">Contact Us</Link> */}
+        <Link to="/about-us">About Us</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/signup"></Link>
+        <button onClick={toggleNavbar}>
+          <ReorderIcon />
+        </button>
+      </div>
+    </div>
+  );
 }
 
-export default NavBar;
+export default Navbar;

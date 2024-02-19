@@ -1,44 +1,35 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Login from './Components/Pages/Login'
-import SignupForm from './Components/Pages/SignupForm'
-import HomePage from './Components/Pages/HomePage'
+import Login from './Components/Pages/LoginPage/Login'
+import SignupForm from './Components/Pages/SignUpPage/SignupForm'
+import HomePage from './Components/Pages/HomePage/HomePage'
+import NewsPage from './Components/Pages/NewsPage/NewsPage'
+import AboutUs from './Components/Pages/AboutUsPage/AboutUs'
+import ContactUs from './Components/Pages/ContactUsPage/ContactUs'
+import Sidebar from './Components/Sidebar'
 import Navbar from './Components/Navbar'
-import NewsPage from './Components/Pages/NewsPage'
-import AboutUs from './Components/Pages/AboutUs'
-import ContactUs from './Components/Pages/ContactUs'
+import SideNavbar from './Components/SideNavbar'
+import Header from './Components/Header'
+import Footer from './Components/Footer'
+import Dashboard from './Components/MainPages/AdminDashboard/Dashboard'
+import Collection_Route from './Components/Pages/CollectionRoutePage/Collection_Route'
 
 function App() {
-    return ( <
-        Router >
-        <
-        div >
-        <
-        Navbar / >
-        <
-        Routes >
-        <
-        Route exact path = '/'
-        element = { < HomePage / > }
-        />  <
-        Route exact path = '/news'
-        element = { < NewsPage / > }
-        /> <
-        Route exact path = '/contact-us'
-        element = { < ContactUs / > }
-        /> <
-        Route exact path = '/about-us'
-        element = { < AboutUs / > }
-        /> <
-        Route exact path = '/login'
-        element = { < Login / > }
-        />  <
-        Route exact path = '/signup'
-        element = { < SignupForm / > }
-        />  <
-        /Routes>    <
-        /div>  <
-        /Router>
+    return (
+      <Router>
+        <div>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignupForm />} />
+            <Route path="/admin-dashboard" element={<Dashboard />} />
+            <Route path="/route" element={<Collection_Route />} />
+          </Routes>
+        </div>
+      </Router>
     );
 }
 

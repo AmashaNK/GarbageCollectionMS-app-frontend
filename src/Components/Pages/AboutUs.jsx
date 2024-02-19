@@ -1,8 +1,11 @@
 import React from 'react'
+import AdminMenuList from '../Assets/AdminMenuList';
 
 function AboutUs() {
   return (
-    <div>AboutUs</div>
+      <div>AboutUs
+          <AdminMenuList />
+      </div>
   )
 }
 
