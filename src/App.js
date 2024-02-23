@@ -6,8 +6,14 @@ import HomePage from './Components/Pages/HomePage/HomePage'
 import NewsPage from './Components/Pages/NewsPage/NewsPage'
 import AboutUs from './Components/Pages/AboutUsPage/AboutUs'
 import ContactUs from './Components/Pages/ContactUsPage/ContactUs'
-import Dashboard from './Components/MainPages/Admin/Dashboard'
+import AdminDashboard from './Components/MainPages/Admin/AdminDashboard'
+import TruckDriverDashboard from './Components/MainPages/TruckDriver/TruckDriverDashboard'
+import HouseOwnerDashboard from './Components/MainPages/HouseOwner/HouseOwnerDashboard'
 import Collection_Route from './Components/Pages/CollectionRoutePage/Collection_Route'
+import AddNewBin from './Components/MainPages/Admin/AddNewBin'
+import AddTruck from './Components/MainPages/Admin/AddTruck'
+import AddTruckDriver from './Components/MainPages/Admin/AddTruckDriver'
+import AvailableTrucks from './Components/MainPages/Admin/AvailableTrucks'
 
 function App() {
     return ( <
@@ -36,7 +42,25 @@ function App() {
         element = { < SignupForm / > }
         /> <
         Route path = "/admin-dashboard"
-        element = { < Dashboard / > }
+        element = { < AdminDashboard / > }
+        /> <
+        Route path = "/truckdriver-dashboard"
+        element = { < TruckDriverDashboard / > }
+        /> <
+        Route path = "/house-owner-dashboard"
+        element = { < HouseOwnerDashboard / > }
+        /> <
+        Route path = "/add/new/bin"
+        element = { < AddNewBin / > }
+        /> <
+        Route path = "/add/truck"
+        element = { < AddTruck / > }
+        /> <
+        Route path = "/add/truck/driver"
+        element = { < AddTruckDriver / > }
+        /> <
+        Route path = "/available/trucks"
+        element = { < AvailableTrucks / > }
         /> <
         Route path = "/route"
         element = { < Collection_Route / > }
