@@ -14,6 +14,8 @@ import AddNewBin from './Components/MainPages/Admin/AddNewBin'
 import AddTruck from './Components/MainPages/Admin/AddTruck'
 import AddTruckDriver from './Components/MainPages/Admin/AddTruckDriver'
 import AvailableTrucks from './Components/MainPages/Admin/AvailableTrucks'
+import AvailableDrivers from './Components/MainPages/Admin/AvailableDrivers'
+import EditNewsPage from './Components/MainPages/Admin/EditNewsPage'
 
 function App() {
     return ( <
@@ -61,6 +63,12 @@ function App() {
         /> <
         Route path = "/available/trucks"
         element = { < AvailableTrucks / > }
+        /> <
+        Route path = "/available/drivers"
+        element = { < AvailableDrivers / > }
+        /> <
+        Route path = "/edit/newspage"
+        element = { < EditNewsPage / > }
         /> <
         Route path = "/route"
         element = { < Collection_Route / > }
