@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -8,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import DeleteIcon from '@mui/icons-material/Delete';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
@@ -18,12 +20,10 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Logo from "../../Assets/logo.png";
-import RemoveRedEyeRoundedIcon from '@mui/icons-material/RemoveRedEyeRounded';
-import PersonAddAltRoundedIcon from '@mui/icons-material/PersonAddAltRounded';
-import ContactMailSharpIcon from '@mui/icons-material/ContactMailSharp';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 
-const drawerWidth = 220;
+import { AddCircleOutlineOutlined, Info, LocalShipping, Newspaper, Person, PersonAdd, VisibilityOutlined } from '@mui/icons-material';
+
+const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
     const { window } = props;
@@ -31,6 +31,7 @@ function ResponsiveDrawer(props) {
     const [isClosing, setIsClosing] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+    const [selectedMenuItem, setSelectedMenuItem] = React.useState('Overview'); // State to track selected menu item
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -61,6 +62,12 @@ function ResponsiveDrawer(props) {
     const handleMobileMenuOpen = (event) => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
+
+    const handleMenuItemClick = (text) => {
+        setSelectedMenuItem(text); // Update selected menu item
+        handleMenuClose(); // Close the menu
+    };
+    
 
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
@@ -135,19 +142,27 @@ function ResponsiveDrawer(props) {
     const drawer = (
         <div>
             <div>
-                <img src={Logo} style={{ width: '200px', height: '130px', marginTop: '20px', marginLeft: '10px' }} />
+                <img src={Logo} style={{ width: '200px', height: '130px', marginTop: '20px', marginLeft: '10px',marginBottom:'30px'}} />
             </div>
             <Toolbar />
-            <List sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '26%', marginTop: '2px', marginLeft: '2px' }}>
+            <List sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '170px', marginTop: '10px', marginLeft: '2px' }}>
                 {[
-                    { text: 'Overview', icon: <RemoveRedEyeRoundedIcon /> },
-                    { text: 'Add Truck Driver', icon: <PersonAddAltRoundedIcon /> },
-                    { text: 'Add Truck', icon: <InboxIcon /> },
-                    { text: 'Available Drivers', icon: <ContactMailSharpIcon /> },
-                    { text: 'Available Trucks', icon: <InboxIcon /> }
+                    { text: 'Overview', icon: <VisibilityOutlined/>, link:'/overview' },
+                    { text: 'Add New Bin', icon: <DeleteIcon/>, link:'/add/new/bin' },
+                    { text: 'Add Truck', icon: <AddCircleOutlineOutlined />, link:'/add/truck' },
+                    { text: 'Add Truck Driver', icon: <PersonAdd />, link:'/add/truck/driver' },
+                    { text: 'Available Trucks', icon: <LocalShipping />, link:'/available/trucks' },
+                    { text: 'Available Drivers', icon: <Person />, link:'/available/drivers' },
+                    { text: 'Edit News Page', icon: <Newspaper />, link:'/edit/newspage' },
+                    { text: 'Edit About Us Page', icon: <Info />, link:'/edit/about-us-page' }
                 ].map((item, index) => (
-                    <ListItem key={item.text} disablePadding>
-                        <ListItemButton>
+                    <ListItem key={item.text} disablePadding component={Link} to={item.link} sx={{ color: 'white' }}>
+                        <ListItemButton 
+                            onClick={() => {
+                                 handleMenuItemClick(item.text);
+                                 handleDrawerClose();
+                            }}           
+                            style={{ backgroundColor: selectedMenuItem === item.text ? '#1C6C6C' : 'transparent' }}>
                             <ListItemIcon>
                                 {React.cloneElement(item.icon, { style: { color: 'white' } })}
                             </ListItemIcon>
@@ -186,10 +201,13 @@ function ResponsiveDrawer(props) {
                         sx={{
                             flexGrow: 1,
                             marginLeft:'20px'
-                         }}
+                        }}
                     >
-                        DASHBOARD
+
+                        {/* display the text of the selected menu item */}
+                        {selectedMenuItem} 
                     </Typography>
+
                     <div>
                         <IconButton
                             size="large"
@@ -237,7 +255,7 @@ function ResponsiveDrawer(props) {
                     '& .MuiDrawer-paper': {
                         boxSizing: 'border-box',
                         width: drawerWidth,
-                        bgcolor: '#163020',
+                        bgcolor: '#548D8D',
                         color: 'white',
                     },
                 }}
@@ -259,7 +277,7 @@ function ResponsiveDrawer(props) {
             >
                 {drawer}
             </Drawer>
-            <Toolbar /> {/* Ensure content is below the app bar */}
+            <Toolbar /> 
             {renderMobileMenu}
             {renderMenu}
         </div>
