@@ -19,6 +19,8 @@ import EditNewsPage from './Components/MainPages/Admin/EditNewsPage'
 import EditAboutUsPage from './Components/MainPages/Admin/EditAboutUsPage'
 import ComplaintsPage from './Components/MainPages/TruckDriver/ComplaintsPage'
 import ViewRoute from './Components/MainPages/TruckDriver/ViewRoute'
+import Occasion from "./Components/MainPages/HouseOwner/Occasion";
+import Complaints from "./Components/MainPages/HouseOwner/Complaints";
 
 function App() {
     return ( <
@@ -30,63 +32,69 @@ function App() {
         <
         Route path = "/"
         element = { < HomePage / > }
-        /> <
+        />{" "} <
         Route path = "/news"
         element = { < NewsPage / > }
-        /> <
+        />{" "} <
         Route path = "/contact-us"
         element = { < ContactUs / > }
-        /> <
+        />{" "} <
         Route path = "/about-us"
         element = { < AboutUs / > }
-        /> <
+        />{" "} <
         Route path = "/login"
         element = { < Login / > }
-        /> <
+        />{" "} <
         Route path = "/signup"
         element = { < SignupForm / > }
-        /> <
+        />{" "} <
         Route path = "/admin-dashboard"
         element = { < AdminDashboard / > }
-        /> <
+        />{" "} <
         Route path = "/truckdriver-dashboard"
         element = { < TruckDriverDashboard / > }
-        /> <
+        />{" "} <
         Route path = "/house-owner-dashboard"
         element = { < HouseOwnerDashboard / > }
-        /> <
+        />{" "} <
         Route path = "/add/new/bin"
         element = { < AddNewBin / > }
-        /> <
+        />{" "} <
         Route path = "/add/truck"
         element = { < AddTruck / > }
-        /> <
+        />{" "} <
         Route path = "/add/truck/driver"
         element = { < AddTruckDriver / > }
-        /> <
+        />{" "} <
         Route path = "/available/trucks"
         element = { < AvailableTrucks / > }
-        /> <
+        />{" "} <
         Route path = "/available/drivers"
         element = { < AvailableDrivers / > }
-        /> <
+        />{" "} <
         Route path = "/edit/newspage"
         element = { < EditNewsPage / > }
-        /> <
+        />{" "} <
         Route path = "/edit/about-us-page"
         element = { < EditAboutUsPage / > }
-        /> <
+        />{" "} <
         Route path = "/truck-driver/complaints"
         element = { < ComplaintsPage / > }
-        /> <
+        />{" "} <
+        Route path = "/special/occasion-request"
+        element = { < Occasion / > }
+        />{" "} <
+        Route path = "/add/complaints"
+        element = { < Complaints / > }
+        />{" "} <
         Route path = "/truck-driver/view-route"
         element = { < ViewRoute / > }
-        /> <
+        />{" "} <
         Route path = "/route"
         element = { < Collection_Route / > }
-        /> <
-        /Routes> <
-        /div> <
+        />{" "} <
+        /Routes>{" "} <
+        /div>{" "} <
         /Router>
     );
 }
