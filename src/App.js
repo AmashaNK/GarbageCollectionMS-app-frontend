@@ -16,6 +16,9 @@ import AddTruckDriver from './Components/MainPages/Admin/AddTruckDriver'
 import AvailableTrucks from './Components/MainPages/Admin/AvailableTrucks'
 import AvailableDrivers from './Components/MainPages/Admin/AvailableDrivers'
 import EditNewsPage from './Components/MainPages/Admin/EditNewsPage'
+import EditAboutUsPage from './Components/MainPages/Admin/EditAboutUsPage'
+import ComplaintsPage from './Components/MainPages/TruckDriver/ComplaintsPage'
+import ViewRoute from './Components/MainPages/TruckDriver/ViewRoute'
 
 function App() {
     return ( <
@@ -69,6 +72,15 @@ function App() {
         /> <
         Route path = "/edit/newspage"
         element = { < EditNewsPage / > }
+        /> <
+        Route path = "/edit/about-us-page"
+        element = { < EditAboutUsPage / > }
+        /> <
+        Route path = "/truck-driver/complaints"
+        element = { < ComplaintsPage / > }
+        /> <
+        Route path = "/truck-driver/view-route"
+        element = { < ViewRoute / > }
         /> <
         Route path = "/route"
         element = { < Collection_Route / > }

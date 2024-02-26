@@ -4,13 +4,12 @@ import AdminTaskList from './AdminTaskList';
 
 const AddNewBin = () => {
     const [binDetails, setBinDetails] = useState({
-        binName: '',
         height: '',
         baseArea: '',
         numOfHouses: ''
     });
 
-    const paperStyle = { padding: 30, height: '70vh', width: 400, margin: "50px auto" };
+    const paperStyle = { padding: 30, height: '55vh', width: 400, margin: "50px auto" };
     const textFieldContainerStyle = {
         display: 'flex',
         flexDirection: 'column',
@@ -27,13 +26,11 @@ const AddNewBin = () => {
     };
 
     const handleSave = () => {
-        // Here you can perform saving logic using binDetails state
         console.log('Saving bin details:', binDetails);
     };
 
     const handleReset = () => {
         setBinDetails({
-            binName: '',
             height: '',
             baseArea: '',
             numOfHouses: ''
@@ -48,17 +45,6 @@ const AddNewBin = () => {
                     <Paper elevation={10} style={paperStyle}>
                         <h3>ADD</h3>
                         <div style={textFieldContainerStyle}>
-                            <TextField
-                                id="binName"
-                                name="binName"
-                                variant="standard"
-                                label='Bin Name'
-                                placeholder='Enter bin name'
-                                fullWidth
-                                required
-                                value={binDetails.binName}
-                                onChange={handleInputChange}
-                            />
                             <TextField
                                 id="height"
                                 name="height"

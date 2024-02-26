@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -82,8 +83,8 @@ function ResponsiveDrawer(props) {
             open={Boolean(anchorEl)}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            <MenuItem onClick={handleMenuClose}>My Account</MenuItem>
+            <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
         </Menu>
     );
 
@@ -143,11 +144,11 @@ function ResponsiveDrawer(props) {
             <Toolbar />
             <List sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '5px', marginTop: '10px', marginLeft: '2px' }}>
                 {[
-                    { text: 'Overview', icon: <VisibilityOutlined/> },
-                    { text: 'View Route', icon: <LocationOn /> },
-                    { text: 'Complaints', icon: <Feedback /> }
+                    { text: 'Overview', icon: <VisibilityOutlined/> , link:'/truck-driver/overview'},
+                    { text: 'View Route', icon: <LocationOn />, link:'/truck-driver/view-route' },
+                    { text: 'Complaints', icon: <Feedback />, link:'/truck-driver/complaints' }
                 ].map((item, index) => (
-                    <ListItem key={item.text} disablePadding>
+                    <ListItem key={item.text} disablePadding component={Link} to={item.link} sx={{ color: 'white' }}>
                         <ListItemButton onClick={() => handleMenuItemClick(item.text)} style={{ backgroundColor: selectedMenuItem === item.text ? '#1C6C6C' : 'transparent' }}>
                             <ListItemIcon>
                                 {React.cloneElement(item.icon, { style: { color: 'white' } })}
