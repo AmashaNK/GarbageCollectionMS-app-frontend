@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
@@ -7,6 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import { styled } from "@mui/material/styles";
 import HouseOwnerTaskList from "./HouseOwnerTaskList";
+import { submitComplaint } from "../../Service/HouseOwnerComplaintService";
 
 const PageContainer = styled("div")({
   display: "flex",
@@ -30,35 +32,44 @@ const CenteredForm = styled("form")({
 });
 
 const Complaints = () => {
-  const [complaintsType, setComplaintsType] = useState("");
+  const [complaintType, setComplaintType] = useState("");
 
-  const [contactNumber, setContactNumber] = useState("");
+  const [contactNo, setContactNo] = useState("");
   const [description, setDescription] = useState("");
 
-  const handleComplaintsTypeChange = (event) => {
-    setComplaintsType(event.target.value);
+  const handleComplaintTypeChange = (event) => {
+    setComplaintType(event.target.value);
   };
 
-  const handleContactNumberChange = (event) => {
-    const formattedNumber = event.target.value.replace(/[^0-9]/g, "");
-    setContactNumber(formattedNumber);
+  const handleContactNoChange = (event) => {
+    //const formattedNumber = event.target.value.replace(/[^0-9]/g, "");
+    setContactNo(event.target.value);
   };
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Complaints Type:", complaintsType);
-
-    console.log("Contact Number:", contactNumber);
-    console.log("Description:", description);
-  };
+  
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  try {
+    const complaintData = {
+      complaintType: complaintType,
+      contactNo: contactNo,
+      description: description,
+    };
+    const response = await submitComplaint(complaintData);
+    console.log('Complaint submitted successfully:', response);
+    // Optionally, show a success message or perform any other action
+  } catch (error) {
+    console.error('Error submitting complaint:', error.message);
+    // Optionally, show an error message to the user
+  }
+};
 
   const handleReset = () => {
-    setComplaintsType("");
-
-    setContactNumber("");
+    setComplaintType("");
+    setContactNo("");
     setDescription("");
   };
 
@@ -75,16 +86,16 @@ const Complaints = () => {
           <FormControl fullWidth>
             <Select
               labelId="complaintsType-label"
-              value={complaintsType}
-              onChange={handleComplaintsTypeChange}
+              value={complaintType}
+              onChange={handleComplaintTypeChange}
               size="small"
             >
               <MenuItem value="" disabled>
                 Select Type
               </MenuItem>
-              <MenuItem value="1">Wedding</MenuItem>
-              <MenuItem value="2">Funeral</MenuItem>
-              <MenuItem value="3">Other</MenuItem>
+              <MenuItem value="Wedding">Wedding</MenuItem>
+              <MenuItem value="Funeral">Funeral</MenuItem>
+              <MenuItem value="Other">Other</MenuItem>
             </Select>
           </FormControl>
 
@@ -95,8 +106,8 @@ const Complaints = () => {
             id="contactNumber"
             label=""
             placeholder="Enter the contact Number"
-            value={contactNumber}
-            onChange={handleContactNumberChange}
+            value={contactNo}
+            onChange={handleContactNoChange}
             margin="normal"
             size="small"
             fullWidth
