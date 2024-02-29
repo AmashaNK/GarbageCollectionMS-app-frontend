@@ -7,6 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import { styled } from '@mui/material/styles';
 import AdminTaskList from './AdminTaskList';
+import {addAboutUsData} from '../../Service/EditAboutUsPageService';
 
 const PageContainer = styled('div')({
   display: 'flex',
@@ -18,7 +19,7 @@ const Sidebar = styled('div')({
 });
 
 const FormContainer = styled('div')(({ AdminTaskList }) => ({
-  flex: AdminTaskList ? '1' : 'auto', // Take up remaining space when sidebar is visible
+  flex: AdminTaskList ? '1' : 'auto', 
   padding: '40px',
 }));
 
@@ -30,22 +31,11 @@ const CenteredForm = styled('form')({
 });
 
 const AddNewsForm = () => {
-    const [category, setCategory] = useState('');
-    const [newsTitle, setNewsTitle] = useState('');
-    const [details, setDetails] = useState('');
+    const [content, setContent] = useState('');
     const [selectedImage, setSelectedImage] = useState(null);
 
-  const handleNewsTitleChange = (event) => {
-    setNewsTitle(event.target.value);
-  };
-
-  const handleCategoryChange = (event) => {
-    setCategory(event.target.value);
-  };
-
-
-  const handleDetailsChange = (event) => {
-    setDetails(event.target.value);
+  const handleContentChange = (event) => {
+    setContent(event.target.value);
   };
 
   const handleFeatureImageChange = (event) => {
@@ -53,18 +43,25 @@ const AddNewsForm = () => {
     setSelectedImage(file ? file.name : null);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Category:', category);
-    console.log('News title:', newsTitle);
-    console.log('News details:', details);
-    console.log('Feature image:', selectedImage);
-  };
 
+    try {
+      const editData = {
+        content: content,
+        selectedImage: selectedImage,
+      };
+      const response = await addAboutUsData(editData);
+      console.log('Data submitted successfully:', response);
+      
+    } catch (error) {
+      console.error('Error submitting data:', error.message);
+      
+    }
+  };
+  
   const handleReset = () => {
-    setCategory('');
-    setNewsTitle('');
-    setDetails('');
+    setContent('');
     setSelectedImage(null);
   };
 
@@ -75,53 +72,15 @@ const AddNewsForm = () => {
       </Sidebar>
       <FormContainer AdminTaskList>
         <CenteredForm onSubmit={handleSubmit}>
-          <div style={{ marginBottom: '16px' }}>
-            <InputLabel htmlFor="category">Category</InputLabel>
-          </div>
-          <FormControl fullWidth>
-            <Select
-              labelId="category-label"
-              value={category}
-              onChange={handleCategoryChange}
-              size="small"
-            >
-              <MenuItem value="" disabled>
-                Select Category
-              </MenuItem>
-              <MenuItem value="1">Environment News</MenuItem>
-              <MenuItem value="2">Repairs</MenuItem>
-              <MenuItem value="3">About Tax</MenuItem>
-              <MenuItem value="4">Dengue</MenuItem>
-              <MenuItem value="5">About Tax</MenuItem>
-              <MenuItem value="6">About Garbage</MenuItem>
-              <MenuItem value="7">About Projects</MenuItem>
-            </Select>
-          </FormControl>
-
-          <div style={{ marginTop: '10px' }}>
-            <InputLabel htmlFor="news-title">News Title</InputLabel>
+          <div style={{ marginTop: '5px' }}>
+            <InputLabel htmlFor="details">Content</InputLabel>
           </div>
           <TextField
-            id="newsTitle"
-            label=""
-            placeholder="Enter the news title"
-            value={newsTitle}
-            onChange={handleNewsTitleChange}
-            margin="normal"
-            size="small"
-            fullWidth
-            required
-          />
-
-          <div style={{ marginTop: '10px' }}>
-            <InputLabel htmlFor="details">Details</InputLabel>
-          </div>
-          <TextField
-            id="details"
+            id="content"
             label=""
             placeholder="Enter the news details"
-            value={details}
-            onChange={handleDetailsChange}
+            value={content}
+            onChange={handleContentChange}
             multiline
             rows={6}
             margin="normal"
