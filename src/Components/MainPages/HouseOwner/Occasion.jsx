@@ -7,6 +7,7 @@ import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import { styled } from "@mui/material/styles";
 import HouseOwnerTaskList from "./HouseOwnerTaskList";
+import { submitRequest } from "../../Service/OccasionRequestService";
 
 const PageContainer = styled("div")({
   display: "flex",
@@ -44,19 +45,29 @@ const Occasion = () => {
   };
 
   const handleContactNumberChange = (event) => {
-    const formattedNumber = event.target.value.replace(/[^0-9]/g, "");
-    setContactNumber(formattedNumber);
+    //const formattedNumber = event.target.value.replace(/[^0-9]/g, "");
+    setContactNumber(event.target.value);
   };
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Occasion Type:", occasionType);
-    console.log("Date:", date);
-    console.log("Contact Number:", contactNumber);
-    console.log("Description:", description);
+    try {
+      const requests = {
+        occasionType: occasionType,
+        date:date,
+        contactNumber: contactNumber,
+        description: description,
+      };
+      const response = await submitRequest(requests);
+      console.log('request submitted successfully:', response);
+
+    }catch (error) {
+      console.error('Error submitting request:', error.message);
+      // Optionally, show an error message to the user
+    }
   };
 
   const handleReset = () => {
@@ -86,9 +97,9 @@ const Occasion = () => {
               <MenuItem value="" disabled>
                 Select Type
               </MenuItem>
-              <MenuItem value="1">Wedding</MenuItem>
-              <MenuItem value="2">Funeral</MenuItem>
-              <MenuItem value="3">Other</MenuItem>
+              <MenuItem value="Wedding">Wedding</MenuItem>
+              <MenuItem value="Funeral">Funeral</MenuItem>
+              <MenuItem value="Other">Other</MenuItem>
             </Select>
           </FormControl>
 
