@@ -21,6 +21,7 @@ import ComplaintsPage from './Components/MainPages/TruckDriver/ComplaintsPage'
 import ViewRoute from './Components/MainPages/TruckDriver/ViewRoute'
 import Occasion from "./Components/MainPages/HouseOwner/Occasion";
 import Complaints from "./Components/MainPages/HouseOwner/Complaints";
+import Profile from './Components/Pages/Profile/Profile'
 
 function App() {
     return ( <
@@ -86,6 +87,9 @@ function App() {
         />{" "} <
         Route path = "/add/complaints"
         element = { < Complaints / > }
+        />{" "} <
+        Route path = "/profile"
+        element = { < Profile / > }
         />{" "} <
         Route path = "/truck-driver/view-route"
         element = { < ViewRoute / > }
