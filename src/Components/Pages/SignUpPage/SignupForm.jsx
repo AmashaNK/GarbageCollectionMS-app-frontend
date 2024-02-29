@@ -1,13 +1,18 @@
 import React from 'react';
 import '../Body.css';
 import './SignupForm.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect ,useRef} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../../Sidebar';
 import Navbar from '../../Navbar';
 
+const USER_REGEX=/^[a-zA-Z][a-zA-Z0-9-_]{3,23}/;
+const PWD_REGX=/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+
 
 const SignupForm = () => {
+    const userRef=useRef();
+    const errRef=useRef();
 
     const navigate = useNavigate();
 
