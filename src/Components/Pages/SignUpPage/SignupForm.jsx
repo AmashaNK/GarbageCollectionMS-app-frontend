@@ -9,7 +9,7 @@ import axios from '../../api/axios'
 
 const USER_REGEX=/^[a-zA-Z][a-zA-Z0-9-_]{3,23}/;
 const PWD_REGX=/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL='api/v1/auth/register'
+const REGISTER_URL='/api/v1/auth/register'
 
 const SignupForm = () => {
     const userRef=useRef();
@@ -26,7 +26,7 @@ const SignupForm = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const roles = ['Admin', 'HouseOwner'];
+    const roles = ['ADMIN', 'HOUSEHOLDER'];
 
     //Instructions object mapping each role to specific instructions
     const roleInstructions = {
@@ -37,13 +37,6 @@ const SignupForm = () => {
             password:'At least 12 characters long',
             confirmPassword: 'Re-enter your password'
         },
-        // 'Vehicle': {
-        //     name: 'Enter the vehicle number',
-        //     username: 'Use the vehicle number as your username',
-        //     mobileNumber:'Enter your mobile number',
-        //     password:'At least 12 characters long',
-        //     confirmPassword: 'Re-enter your password'
-        // },
         HouseOwner: {
             name: 'Enter your full name',
             username: 'Use your e-mail as your username',
@@ -118,7 +111,7 @@ const SignupForm = () => {
                 JSON.stringify({role,firstName,lastName,email,nicNo,password,role}),
                 {
                     headers:{'Content-Type':'application/json'},
-                    withCredentials:true
+                    //withCredentials:true
 
                 });
                 console.log(response.data);
