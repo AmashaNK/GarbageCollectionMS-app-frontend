@@ -5,17 +5,24 @@ import { useRef, useState, useEffect } from 'react';
 import { FaUser, FaLock } from "react-icons/fa";
 import Sidebar from '../../Sidebar';
 import Navbar from '../../Navbar';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link,useLocation } from 'react-router-dom';
+import {LoginService} from '../../Service/AuthService';
+// import useAuth from '../hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
+    const {setAuth}=useAuth();
+
+    const navigate = useNavigate();
+    const location=useLocation();
+    const from=location.state?.from.pathname ||'/';
+
     const userRef = useRef();
     const errRef = useRef();
-    const navigate = useNavigate();
 
-    const [user, setUser] = useState('');
-    const [pwd, setPwd] = useState('');
+    const [nicNo, setNicNo] = useState('');
+    const [password, setPassword] = useState('');
     const [errMsg, setErrMsg] =  useState('');
-    const [success, setSuccess] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
 
     useEffect(() => {
@@ -24,92 +31,110 @@ const Login = () => {
 
     useEffect(() => {
         setErrMsg('');
-    }, [user, pwd])
+    }, [nicNo, password])
 
     const handleSubmit = async (e) =>{
         e.preventDefault();      //Prevents the default form submission behavior(page reload)
-        console.log(user, pwd);  //Outputs the value of 'user' and 'pwd' to the console
-        setUser('');             //Clear the state variable 'user'
-        setPwd('');              //Clear the state variable 'pwd'
-        setSuccess(true);        //Sets the state variable 'success' to true
+        try{
+        const response= await LoginService({nicNo, password});
+        console.log(response);
+        //console.log(response?.data?.accessToken)
+        const accessToken=response?.data?.accessToken;
+        const refreshToken=response?.data?.refreshToken;
+        const role=response?.data?.role;
+        //console.log(response?.data?.role);
+        setAuth({nicNo,accessToken,refreshToken,role});
+          //Outputs the value of 'user' and 'pwd' to the console
+        setNicNo('');             //Clear the state variable 'user'
+        setPassword('');              //Clear the state variable 'pwd'
+        navigate(from,{replace:true})
+        // navigate to Admin dashboard
+        //navigate('/admin-dashboard');
+        }catch(err){
+            if(!err?.response){
+                setErrMsg('No server Response');
+            }
+            else if(err.response?.status===400){
+                setErrMsg('Missing NIC number or password');
+            }
+            else if(err.response?.status===401){
+                setErrMsg('Unauthorized');
+            }
+            else{
+                setErrMsg('login Failed');
+            }
+        }
+        
 
-        //navigate to Admin dashboard
-        navigate('/admin-dashboard');
     }
 
     const handleLogin = () =>{
         if(rememberMe){
             //Store user information in local storage
-            localStorage.setItem('userData', JSON.stringify({user, pwd}));
+            localStorage.setItem('userData', JSON.stringify({nicNo, password}));
         }
 
     };
 
     return (
-        <>
-        <Sidebar />
-            {success ? (
-                <section>
-                    <h1>You are logged in!</h1>
-                    <br />
-                    <p>
-                        <a href='./'>Go to Home</a>
-                    </p>
-                </section>
-            ) : (
-        <div className='body'>
-            <div className='wrapper'>
-            <p ref={errRef} className={errMsg ? "errmsg" : 
-            "offscreen"} aria-live='assertive'>{errMsg}</p>
-            <form onSubmit={handleSubmit}>
-                <h1>
-                    Login
-                </h1>
-                <div className='input-box'>
-                    <input 
-                        type="text" 
-                        id='username' 
-                        ref={userRef} 
-                        placeholder='Username' 
-                        autoComplete='off' 
-                        onChange={(e) => setUser(e.target.value)} 
-                        value={user} 
-                        required
-                    />
-                    <FaUser className='icon'/>
-                </div>
-                <div className='input-box'>
-                    <input 
-                        type="password" 
-                        id='password' 
-                        ref={userRef} 
-                        placeholder='Password' 
-                        onChange={(e) => setPwd(e.target.value)} 
-                        value={pwd} 
-                        required 
-                    />
-                    <FaLock className='icon'/>
-                </div>
-                <div className="remember-forgot">
-                    <label>
-                        <input 
-                            type="checkbox"
-                            checked={rememberMe}
-                            onChange={() => setRememberMe(!rememberMe)} 
-                        />
-                        Remember me
-                    </label>
-                    <a href='#'>Forgot Password?</a>
-                </div>
-                <button type='submit' onClick={handleLogin}>Login</button>
-                <div className="signup-link">
-                    <p>Don't have an account? <a href='./signup'>Sign Up</a></p>
-                </div>
-            </form>
+      <div className="body">
+        <div className="wrapper">
+          <p
+            ref={errRef}
+            className={errMsg ? "errmsg" : "offscreen"}
+            aria-live="assertive"
+          >
+            {errMsg}
+          </p>
+          <form onSubmit={handleSubmit}>
+            <h1>Login</h1>
+            <div className="input-box">
+              <input
+                type="text"
+                id="nicNo"
+                ref={userRef}
+                placeholder="NIC Number"
+                autoComplete="off"
+                onChange={(e) => setNicNo(e.target.value)}
+                value={nicNo}
+                required
+              />
+              <FaUser className="icon" />
+            </div>
+            <div className="input-box">
+              <input
+                type="password"
+                id="password"
+                ref={userRef}
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                required
+              />
+              <FaLock className="icon" />
+            </div>
+            <div className="remember-forgot">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={rememberMe}
+                  onChange={() => setRememberMe(!rememberMe)}
+                />
+                Remember me
+              </label>
+              <a href="#">Forgot Password?</a>
+            </div>
+            <button type="submit" onClick={handleLogin}>
+              Login
+            </button>
+            <div className="signup-link">
+              <p>
+                Don't have an account? <a href="./signup">Sign Up</a>
+              </p>
+            </div>
+          </form>
         </div>
-        </div>
-            )}
-        </>
+      </div>
     );
 };
  
